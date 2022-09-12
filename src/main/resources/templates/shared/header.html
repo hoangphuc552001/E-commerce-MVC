@@ -1,0 +1,19 @@
+<nav class="nn-header" xmlns:th="http://www.thymeleaf.org">
+    <img src="/images/banner.png" style="height: 150px;">
+    <ul class="nav nn-lang">
+        <li class="nav-item">
+            <a class="nav-link" href="#">Tiếng Việt</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">English</a>
+        </li>
+    </ul>
+    <form action="/product/search" class="nn-search">
+        <div class="input-group input-group-sm">
+            <input name="keyword" class="form-control" placeholder="Keywords">
+            <span class="input-group-text">
+            	<i class='bx bx-file-find'></i>
+            </span>
+        </div>
+    </form>
+</nav>

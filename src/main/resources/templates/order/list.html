@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/shared/layout::dynamic(~{::view})}">
+<main th:fragment="view">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Order Date</th>
+                <th>Shipping Address</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="o : ${orders}">
+                <td th:text="${o.id}"></td>
+                <td th:text="${o.createDate}"></td>
+                <td th:text="${o.address}"></td>
+                <td th:text="${o.amount}"></td>
+                <td th:text="${o.orderState.name}"></td>
+                <td>
+                    <a th:href="@{|/order/detail/${o.id}|}">Chi tiết</a>
+                    <a th:if="${o.orderState.id == 0}" th:href="@{|/order/cancel/${o.id}|}">Hủy</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</main>
+
+</html>

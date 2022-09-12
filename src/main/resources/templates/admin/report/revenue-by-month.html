@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	th:replace="~{/admin/shared/layout::dynamic(~{::view})}">
+	<main th:fragment="view">
+		<h3>Inventory</h3>
+		<table class="table">
+	    <thead>
+	      <tr>
+	        <th>Month</th>
+	        <th>Count</th>
+	        <th>Revenue</th>
+	        <th>Min Price</th>
+	        <th>Max Price</th>
+	        <th>Avg Price</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr th:each="e: ${revenues}">
+	        <td th:text="${e.group}"></td>
+	        <td th:text="${e.count}"></td>
+	        <td th:text="${e.value}"></td>
+	        <td th:text="${e.min}"></td>
+	        <td th:text="${e.max}"></td>
+	        <td th:text="${#numbers.formatDecimal(e.avg, 0, 2)}"></td>
+	      </tr>
+	    </tbody>
+	  </table>
+	  <div th:replace="~{/admin/report/revenue-by-month-chart}"></div>
+	</main>
+</html>

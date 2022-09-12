@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	th:replace="~{/shared/layout::dynamic(~{::view})}">
+	<main th:fragment="view">
+		<div class="card">
+		  <div class="card-header">SHOPPING CART</div>
+		  <table class="table" th:fragment="scart">
+		    <thead>
+		      <tr>
+		        <th>Id</th>
+		        <th>Name</th>
+		        <th>Unit Price</th>
+		        <th>Discount</th>
+		        <th>Quantity</th>
+		        <th>Amount</th>
+		        <th></th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr th:each="item: ${cart.items}" th:attr="data-id=${item.id}, data-price=${item.price}, data-discount=${item.discount}">
+		        <td th:text="${item.id}"></td>
+		        <td th:text="${item.name}"></td>
+		        <td th:text="${item.price}"></td>
+		        <td th:text="${item.discount * 100}"></td>
+		        <td>
+		        	<input th:value="${item.quantity}" class="nn-cart-update">
+		        </td>
+		        <td class="nn-item-amt" th:text="${item.amount}"></td>
+		        <th>
+		        	<button class="btn btn-sm btn-danger nn-cart-remove">Del</button>
+		        </th>
+		      </tr>
+		    </tbody>
+		  </table>
+		  <div class="card-footer">
+		  	<a href="/cart/clear" class="btn btn-sm btn-danger">Clear</a>
+		  	<a href="/order/checkout" class="btn btn-sm btn-success float-end">Checkout</a>
+		  </div>
+		</div>
+	</main>
+</html>

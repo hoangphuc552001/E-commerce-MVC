@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/shared/layout::dynamic(~{::view})}">
+<main th:fragment="view">
+	<div th:replace="~{/cart/view::scart}"></div>
+    <form th:object="${order}" action="/order/purchase" method="post">
+        <div class="mb-3 mt-3">
+            <label>Customer:</label>
+            <input th:field="*{customer.username}" class="form-control">
+        </div>
+        <div class="mb-3 mt-3">
+            <label>Order Date:</label>
+            <input th:field="*{createDate}" class="form-control">
+        </div>
+        <div class="mb-3 mt-3">
+            <label>Total Amount:</label>
+            <input th:field="*{amount}" class="form-control">
+        </div>
+        <div class="mb-3 mt-3">
+            <label>Shipping Address:</label>
+            <textarea th:field="*{address}" class="form-control" rows="3"></textarea>
+        </div>
+        <input th:field="*{orderState.id}" type="hidden">
+        <button class="btn btn-primary">Purchase</button>
+    </form>
+</main>
+
+</html>

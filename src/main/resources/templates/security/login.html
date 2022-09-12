@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	th:replace="~{/shared/layout::dynamic(~{::view})}">
+	<main th:fragment="view">
+		<h3>LOGIN</h3>
+		<i th:text="${message}"></i>
+		<form action="/spring/login" method="post">
+			<br>Username:<br>
+			<input name="username">
+			<br>Password:<br>
+			<input name="password">
+			<br>
+			<input type="checkbox" name="remember-me"> Remember me?
+			<br>
+			<button>Login</button>
+		</form>
+	</main>
+</html>

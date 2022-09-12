@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	th:replace="~{/shared/layout::dynamic(~{::view})}">
+	<main th:fragment="view">
+		<div class="row">
+			<div th:each="p: ${page.content}" class="col-4 mb-3">
+				<div class="card">
+					<div class="card-header" th:text="${p.name}">Header</div>
+					<div class="card-body text-center">
+						<a th:href="@{|/product/detail/${p.id}|}">
+							<img th:src="@{|/images/items/${p.image}|}" class="nn-item">
+						</a>
+					</div>
+					<div class="card-footer" th:attr="data-id=${p.id}">
+						<span th:text="${p.unitPrice}"></span>
+						<div class="float-end">
+							<button class="btn btn-sm btn-success nn-cart-add">
+								<i class='bx bxs-cart-add'></i>
+							</button>
+							<button class="btn btn-sm btn-info nn-like">
+								<i class='bx bxs-like bx-flip-horizontal' ></i>
+							</button>
+							<button class="btn btn-sm btn-warning nn-share" data-bs-toggle="modal" data-bs-target="#share-dialog">
+								<i class='bx bxs-share-alt bx-flip-horizontal' ></i>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="card" th:with="p=${page.number}, t=${page.totalPages}, kw=${param.keyword}">
+			<div class="card-body">
+				<div class="float-end">
+					<a th:href="@{|?p=0&keyword=${kw}|}" class="btn btn-sm btn-warning">First</a>
+					<a th:unless="${page.first}" th:href="@{|?p=${p-1}&keyword=${kw}|}" class="btn btn-sm btn-warning">Prev</a>
+					<a th:unless="${page.last}" th:href="@{|?p=${p+1}&keyword=${kw}|}" class="btn btn-sm btn-warning">Next</a>
+					<a th:href="@{|?p=${t-1}&keyword=${kw}|}" class="btn btn-sm btn-warning">Last</a>
+				</div>
+				<div>
+					<span th:text="${p+1}"></span> of 
+					<span th:text="${t}"></span> pages
+				</div>
+			</div>
+		</div>
+		<div th:replace="/product/share-dialog"></div>
+	</main>
+</html>

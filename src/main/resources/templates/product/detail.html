@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	th:replace="~{/shared/layout::dynamic(~{::view})}">
+	<main th:fragment="view">
+		<div class="row nn-detail">
+			<div class="col-5 text-center">
+				<img th:src="@{|/images/items/${item.image}|}">
+			</div>
+			<ul class="col-7">
+				<li>
+					<b>Product Id: </b>
+					<i th:text="${item.id}"></i>
+				</li>
+				<li>
+					<b>Product Name: </b>
+					<i th:text="${item.name}"></i>
+				</li>
+				<li>
+					<b>Unit Price: </b>
+					<i th:text="${item.unitPrice}"></i>
+				</li>
+				<li>
+					<b>Discount: </b>
+					<i th:text="${item.discount * 100}"></i>%
+				</li>
+				<li>
+					<b>Quantity: </b>
+					<i th:text="${item.quantity}"></i>
+				</li>
+				<li>
+					<b>Product Date: </b>
+					<i th:text="${item.createDate}"></i>
+				</li>
+				<li>
+					<b>Category: </b>
+					<i th:text="${item.category.nameVn}"></i>
+				</li>
+			</ul>
+		</div>
+		<div class="card">
+			<div class="card-header">HÀNG CÙNG LOẠI</div>
+			<div class="card-body nn-thumb">
+				<th:block th:each="p: ${item.category.products}">
+					<a  th:href="@{|/product/detail/${p.id}|}">
+						<img th:src="@{|/images/items/${p.image}|}">
+					</a>
+				</th:block>
+			</div>
+		</div>
+	</main>
+</html>

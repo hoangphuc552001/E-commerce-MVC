@@ -1,0 +1,52 @@
+<nav xmlns:th="http://www.thymeleaf.org">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+
+        <div class="container-fluid">
+            <!-- Links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Trang chủ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/product/discount">Khuyến mại</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/product/best">Bán chạy</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/product/favorite">Yêu thích</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/product/latest">Mới nhập</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Tài khoản</a>
+                    <ul class="dropdown-menu">
+                        <th:block th:unless="${@auth.authenticated}">
+                            <li><a class="dropdown-item" href="/security/login/form">Đăng nhập</a></li>
+                            <li><a class="dropdown-item" href="/account/sign-up">Đăng ký</a></li>
+                            <li><a class="dropdown-item" href="/account/forgot-password">Quên mật khẩu</a></li>
+                        </th:block>
+                        <th:block th:if="${@auth.authenticated}">
+                            <li><a class="dropdown-item" href="/account/change-password">Đổi mật khẩu</a></li>
+                            <li><a class="dropdown-item" href="/account/edit-profile">Cập nhật tài khoản</a></li>
+                            <li><a class="dropdown-item" href="/order/list">Quản lý đơn hàng</a></li>
+                            <li><a class="dropdown-item" href="/order/items">Hàng đã mua</a></li>
+                            <li><a class="dropdown-item" href="/spring/logout">Đăng xuất</a></li>
+                        </th:block>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cart/view">
+                        <b id="cart-cnt">5</b> mặt hàng x $
+                        <b id="cart-amt">26</b>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </nav>
+</nav>

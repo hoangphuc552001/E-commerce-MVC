@@ -1,0 +1,42 @@
+<nav xmlns:th="http://www.thymeleaf.org">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+
+        <div class="container-fluid">
+            <!-- Links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Trang chủ</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Quản lý dữ liệu</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/admin/category/index">Loại hàng</a></li>
+                        <li><a class="dropdown-item" href="/admin/product/index?p=0">Hàng hóa</a></li>
+                        <li><a class="dropdown-item" href="/admin/customer/index">Khách hàng</a></li>
+                        <li><a class="dropdown-item" href="/admin/order/index">Đơn đặt hàng</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Thống kê</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/admin/report/inventory">Hàng tồn</a></li>
+                        <li><a class="dropdown-item" href="/admin/report/revenue/category">Doanh số từng loại hàng</a></li>
+                        <li><a class="dropdown-item" href="/admin/report/revenue/month">Doanh số theo tháng</a></li>
+                        <li><a class="dropdown-item" href="/admin/report/vip">Khách VIP</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav float-end">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Phân quyền</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/admin/role/index">Vai trò</a></li>
+                        <li><a class="dropdown-item" href="/admin/master/index">Người quản trị</a></li>
+                        <li><a class="dropdown-item" href="/admin/authorize">Phân quyền sử dụng</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</nav>
